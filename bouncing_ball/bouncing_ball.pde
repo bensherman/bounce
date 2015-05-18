@@ -33,19 +33,19 @@ void move() {
   } else {       
     v -= a;      // if we aren't, decelerate
   }
-  
+
   yPosition += v * d / pixel_size;
-  if (yPosition > h - (ballSize / 2)) {   // if we are off the screen, bounce.
+  if (yPosition > h - (ballSize / 2)) {   // if the ball hits the floor, bounce it.
     println("boing");
+    d *= -1;
     yPosition = h - (ballSize / 2); // and make sure we don't go past the floor.
   }
   if (yPosition == h - (ballSize / 2)) { 
-    d *= -1;
     v *= bounciness;
     xv *= roughness;
     println("slow");
   }
-  
+
   xPosition += xv * xd / pixel_size;
   if (xPosition > (w - (ballSize / 2))) {
     xd *= -1;
@@ -56,6 +56,7 @@ void move() {
     xv *= bounciness;
     xPosition = ballSize / 2;
   } 
+
   println(xPosition, yPosition, xv, v);
 }
 
