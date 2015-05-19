@@ -2,7 +2,7 @@ float g = 9.804;
 int fr = 30;
 
 class Ball {
-  color c;
+  color mycolor;
   float xpos;
   float ypos;
   float xspeed;  // positive is right
@@ -11,8 +11,8 @@ class Ball {
   float roughness;
   float size;
   
-  Ball(color aC, float aXpos, float aYpos, float aSize, float aBounciness, float aRoughness){
-    c = aC;
+  Ball(color aColor, float aXpos, float aYpos, float aSize, float aBounciness, float aRoughness){
+    mycolor = aColor;
     xpos = aXpos;
     ypos = aYpos;
     size = aSize;
@@ -22,7 +22,7 @@ class Ball {
   }
     
   void display(){
-    fill(c);
+    fill(mycolor);
     ellipse(xpos, ypos, size, size);
   }
   
