@@ -1,5 +1,5 @@
 float g = 9.804;
-int fr = 30;
+int frameRate = 30;
 
 class Ball {
   color mycolor;
@@ -41,11 +41,9 @@ class Ball {
     if ( ypos > height - ( size / 2 )) {
       yspeed *= -1 * bounciness;
       ypos = height - (size/2);  
-      println("boing");   
     }
     if ( ypos == height - ( size / 2 )) {
      xspeed *= roughness;
-     println("slow");
     }
   } 
   void status(){
@@ -53,7 +51,7 @@ class Ball {
   }
 
   float force(){
-    return g / fr;
+    return g / frameRate;
   }  
 }
 
@@ -61,7 +59,6 @@ ArrayList<Ball> balls = new ArrayList<Ball>();
 
 void setup(){
   size(640, 480, P2D);
-  frameRate = fr;
   balls.add(new Ball(255, mouseX, mouseY, 50, .90, .90));
 }
 
