@@ -83,14 +83,16 @@ void draw(){
       ball.move();
       ball.age();
       if (ball.age > 20 * frameRate ){
-        ball.shrink(1);
+        ball.shrink(2.0/frameRate);
       }
       println(ball.age, ball.size);
       println("balls: ", balls.size()); 
-      if (ball.size == 0) {
+      if (ball.size < 1) {
         balls.remove(i);
       }
     }
+  } else {
+    println("no more balls");
   }
 }
 
