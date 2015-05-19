@@ -57,21 +57,22 @@ class Ball {
   }  
 }
 
-Ball b;
+ArrayList<Ball> balls = new ArrayList<Ball>();
 
 void setup(){
   size(640, 480, P2D);
   frameRate = fr;
-  b = new Ball(255, width/2, height/2, 50, .90, .90);
+  balls.add(new Ball(255, mouseX, mouseY, 50, .90, .90));
 }
 
 void draw(){
   background(255, 192, 0);
-  b.display();
-  b.move();
-  b.status();
+  for (Ball ball : balls){
+    ball.display();
+    ball.move();
+  }
 }
 
 void mouseClicked(){
-  b = new Ball(255, mouseX, mouseY, 50, .90, .90);
+  balls.add(new Ball(255, mouseX, mouseY, 50, .90, .90));
 }
