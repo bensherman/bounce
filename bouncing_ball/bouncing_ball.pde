@@ -1,14 +1,12 @@
-int w = 640;  // width
-int h = 480;  // height
 int fr = 30;  // framerate
 
 void setup() {
-  size(w, h);
+  size(640, 480, P2D);
   frameRate = fr;
   smooth();
 }
 
-float xPosition = w / 2;
+float xPosition = width / 2;
 float yPosition = 0;
 float g = 9.804;  // gravitational constant
 float v = 0;      // velocity on y axis
@@ -35,22 +33,22 @@ void move() {
   }
 
   yPosition += v * d / pixel_size;
-  if (yPosition > h - (ballSize / 2)) {   // if the ball hits the floor, bounce it.
+  if (yPosition > height - (ballSize / 2)) {   // if the ball hits the floor, bounce it.
     println("boing");
     d *= -1;
-    yPosition = h - (ballSize / 2); // and make sure we don't go past the floor.
+    yPosition = height - (ballSize / 2); // and make sure we don't go past the floor.
   }
-  if (yPosition == h - (ballSize / 2)) { 
+  if (yPosition == height - (ballSize / 2)) { 
     v *= bounciness;
     xv *= roughness;
     println("slow");
   }
 
   xPosition += xv * xd / pixel_size;
-  if (xPosition > (w - (ballSize / 2))) {
+  if (xPosition > (width - (ballSize / 2))) {
     xd *= -1;
     xv *= bounciness;
-    xPosition = w - (ballSize / 2);
+    xPosition = width - (ballSize / 2);
   } else if (xPosition < 0 + (ballSize / 2) ) {
     xd *= -1;
     xv *= bounciness;
