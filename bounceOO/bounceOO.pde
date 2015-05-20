@@ -5,7 +5,7 @@ class Ball {
   color mycolor;
   float xpos;
   float ypos;
-  float xspeed;  // positive is right
+  float xspeed = 0;  // positive is right
   float yspeed;  // positive is down
   float bounciness; 
   float roughness;
@@ -19,7 +19,6 @@ class Ball {
     size = aSize;
     bounciness = aBounciness;
     roughness = aRoughness;
-    xspeed = random(-10, 10);
     age = 0;
   }
 
@@ -92,6 +91,13 @@ void draw() {
     fill(0);
     ellipse(xPosStart, yPosStart, 5, 5);
     line(xPosStart, yPosStart, mouseX, mouseY);
+    pushMatrix();
+      translate(mouseX, mouseY);
+      float a = atan2(yPosStart - mouseY, xPosStart - mouseX);
+      rotate(a);
+      fill(0);
+      triangle(0, 0, 10, 5, 10, -5);
+    popMatrix(); 
   }
 
   if (balls.size() > 0) {
@@ -133,6 +139,8 @@ void mouseReleased() {
   if (abs(xDelta) >= 1 && abs(yDelta) >= 1) {
     ball.xspeed = -5.0 * xDelta / frameRate;
     ball.yspeed = -5.0 * yDelta / frameRate;
+  } else {
+    ball.xspeed = random(-10, 10);
   }
   balls.add(ball);
 }
