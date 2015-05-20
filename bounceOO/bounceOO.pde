@@ -73,16 +73,14 @@ class Ball {
 
 ArrayList<Ball> balls = new ArrayList<Ball>();
 // for our launcher
-
-
-void setup() {
-  size(640, 480, P2D);
-}
-
 float xPosStart;
 float yPosStart;
 float xPosEnd;
 float yPosEnd;
+
+void setup() {
+  size(640, 480, P2D);
+}
 
 void draw() {
   background(255, 192, 0);
@@ -115,13 +113,6 @@ void draw() {
   } 
   println("balls: ", balls.size());
 }
-
-
-/* change this to if linelen < 1
- void mouseClicked(){
- balls.add(new Ball(255, mouseX, mouseY, 50, .90, .90));
- }
- */
 
 void mousePressed() {
   noCursor();
