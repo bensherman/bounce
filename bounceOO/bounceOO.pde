@@ -86,7 +86,6 @@ float yPosEnd;
 
 void draw() {
   background(255, 192, 0);
-
   if (mousePressed) {
     fill(0);
     ellipse(xPosStart, yPosStart, 5, 5);
@@ -95,8 +94,7 @@ void draw() {
       translate(mouseX, mouseY);
       float a = atan2(yPosStart - mouseY, xPosStart - mouseX);
       rotate(a);
-      fill(0);
-      triangle(0, 0, 10, 5, 10, -5);
+      triangle(-5, 0, 5, 5, 5, -5);
     popMatrix(); 
   }
 
@@ -126,11 +124,13 @@ void draw() {
  */
 
 void mousePressed() {
+  noCursor();
   xPosStart = mouseX;
   yPosStart = mouseY;
 }
 
 void mouseReleased() {
+  cursor();
   xPosEnd = mouseX;
   yPosEnd = mouseY;
   float xDelta = abs(xPosStart) - abs(xPosEnd); 
