@@ -1,36 +1,6 @@
 void setup(){
   size(1000,950);
   background(255);
-  smooth(8);
-  int triangleSize=height/20;
-  int x = 0;
-  int y = 0;
-  noStroke();
-  for(int i=0; i < width; i += triangleSize){
-    for(int j=0; j < height; j += triangleSize){
-      int redish = int(random(1,10));
-      int greenish = int(random(180,200));
-      int blueish = int(random(200,220));
-      float r = random(0,100);
-      if (r > 99){
-        fill(0);
-      } else if (r < 5){
-        fill(0,0,200);
-      } else {
-        fill (redish, greenish, blueish);
-      }
-      int ax = x;
-      int ay = y + triangleSize;
-      int bx = x + triangleSize; 
-      int by = y + triangleSize;
-      int cx = x + triangleSize/2;
-      int cy = y;
-      triangle(ax, ay, bx, by, cx, cy);
-      y += triangleSize;
-    }
-    y = 0;
-    x += triangleSize;
-  }
 }
 
 
@@ -52,13 +22,21 @@ void draw(){
         int r = (fillcolor >> 16) & 0xFF;  // Faster way of getting red(fillcolor)
         int g = (fillcolor >> 8) & 0xFF;   // Faster way of getting green(fillcolor)
         int b = fillcolor & 0xFF;
-        r *= .90;
-        g *= .90;
-        b *= .90;
+        if (mouseButton == LEFT){
+          r *= .90;
+          g *= .90;
+          b *= .90;
+        }
+        if (mouseButton == RIGHT){
+          r = 255;
+          g = 255;
+          b = 255;
+        }
         fill(r,g,b);
       } else {
         noFill();
       }
+
       triangle(ax, ay, bx, by, cx, cy);
       ax = x;
       ay = y + triangleSize;
@@ -71,9 +49,16 @@ void draw(){
         int r = (fillcolor >> 16) & 0xFF;  // Faster way of getting red(fillcolor)
         int g = (fillcolor >> 8) & 0xFF;   // Faster way of getting green(fillcolor)
         int b = fillcolor & 0xFF;
-        r *= .90;
-        g *= .90;
-        b *= .90;
+        if (mouseButton == LEFT){
+          r *= .90;
+          g *= .90;
+          b *= .90;
+        }
+        if (mouseButton == RIGHT){
+          r = 255;
+          g = 255;
+          b = 255;
+        }
         fill(r,g,b);
       } else {
         noFill();
