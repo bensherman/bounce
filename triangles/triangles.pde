@@ -5,7 +5,7 @@ void setup(){
 
 
 void draw(){
-    int triangleSize=height/20;
+  int triangleSize=height/10;
   int x = 0;
   int y = 0;
   noStroke();
@@ -18,25 +18,10 @@ void draw(){
       int cx = x + triangleSize/2;
       int cy = y;
       if(mousePressed && insideTriangle(ax,ay,bx,by,cx,cy,mouseX,mouseY)){
-        color fillcolor = get(mouseX,mouseY);
-        int r = (fillcolor >> 16) & 0xFF;  // Faster way of getting red(fillcolor)
-        int g = (fillcolor >> 8) & 0xFF;   // Faster way of getting green(fillcolor)
-        int b = fillcolor & 0xFF;
-        if (mouseButton == LEFT){
-          r *= .90;
-          g *= .90;
-          b *= .90;
-        }
-        if (mouseButton == RIGHT){
-          r = 255;
-          g = 255;
-          b = 255;
-        }
-        fill(r,g,b);
+        fill(triangleFill());
       } else {
         noFill();
       }
-
       triangle(ax, ay, bx, by, cx, cy);
       ax = x;
       ay = y + triangleSize;
@@ -45,21 +30,7 @@ void draw(){
       cx = x + triangleSize/2;
       cy = y;
       if(mousePressed && insideTriangle(ax,ay,bx,by,cx,cy,mouseX,mouseY)){
-        color fillcolor = get(mouseX,mouseY);
-        int r = (fillcolor >> 16) & 0xFF;  // Faster way of getting red(fillcolor)
-        int g = (fillcolor >> 8) & 0xFF;   // Faster way of getting green(fillcolor)
-        int b = fillcolor & 0xFF;
-        if (mouseButton == LEFT){
-          r *= .90;
-          g *= .90;
-          b *= .90;
-        }
-        if (mouseButton == RIGHT){
-          r = 255;
-          g = 255;
-          b = 255;
-        }
-        fill(r,g,b);
+        fill(triangleFill());
       } else {
         noFill();
       }
@@ -69,6 +40,24 @@ void draw(){
     y = 0;
     x += triangleSize;
   }
+}
+
+color triangleFill(){
+  color fillcolor = get(mouseX,mouseY);
+  int r = (fillcolor >> 16) & 0xFF;  // Faster way of getting red(fillcolor)
+  int g = (fillcolor >> 8) & 0xFF;   // Faster way of getting green(fillcolor)
+  int b = fillcolor & 0xFF;
+  if (mouseButton == LEFT){
+    r *= .90;
+    g *= .90;
+    b *= .90;
+  }
+  if (mouseButton == RIGHT){
+    r = 255;
+    g = 255;
+    b = 255;
+  }
+  return color(r,g,b);
 }
 
 boolean insideTriangle(int ax, int ay, int bx, int by, 
