@@ -3,7 +3,6 @@ void setup(){
   background(255);
 }
 
-
 void draw(){
   int triangleSize=height/10;
   int x = 0;
@@ -44,9 +43,10 @@ void draw(){
 
 color triangleFill(){
   color fillcolor = get(mouseX,mouseY);
-  int r = (fillcolor >> 16) & 0xFF;  // Faster way of getting red(fillcolor)
-  int g = (fillcolor >> 8) & 0xFF;   // Faster way of getting green(fillcolor)
-  int b = fillcolor & 0xFF;
+  int r = red(fillcolor); 
+  int g = green(fillcolor);
+  int b = blue(fillcolor);
+  colorToggle = new
   if (mouseButton == LEFT){
     r *= .90;
     g *= .90;
@@ -84,4 +84,26 @@ float triangleArea(int ax, int ay, int bx, int by, int cx, int cy){
 }
 
   
-
+class ColorToggle{
+  int red = 0;
+  int green = 0;
+  int blue = 0;
+  
+  int increase(colorKey){
+    colorKey += 1;
+    if (colorKey > 255) { 
+      return 0;
+    } else {
+      return(colorKey);
+    }
+  }
+  
+  int decrease(colorKey){
+    colorKey -= 1;  
+  if (colorKey < 0 ) { 
+      return 255;
+    } else {
+      return( += 1);  
+    }
+  }
+}
