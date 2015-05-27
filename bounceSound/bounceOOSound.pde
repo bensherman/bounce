@@ -22,6 +22,9 @@ class Ball {
     age = 0;
   }
 
+
+
+
   void display() {
     fill(mycolor);
     ellipse(xpos, ypos, size, size);
