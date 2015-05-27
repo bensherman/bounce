@@ -79,7 +79,7 @@ float xPosEnd;
 float yPosEnd;
 
 void setup() {
-  size(640, 480, P2D);
+  size(1000, 1000, P2D);
 }
 
 void draw() {
@@ -89,15 +89,15 @@ void draw() {
     ellipse(xPosStart, yPosStart, 5, 5);
     line(xPosStart, yPosStart, mouseX, mouseY);
     pushMatrix();
-      translate(mouseX, mouseY);
-      float a = atan2(yPosStart - mouseY, xPosStart - mouseX);
-      rotate(a);
-      triangle(-5, 0, 5, 5, 5, -5);
-    popMatrix(); 
+    translate(mouseX, mouseY);
+    float a = atan2(yPosStart - mouseY, xPosStart - mouseX);
+    rotate(a);
+    triangle(-5, 0, 5, 5, 5, -5);
+    popMatrix();
   }
 
   if (balls.size() > 0) {
-    for (int i=0; i < balls.size (); i++) {
+    for (int i=0; i < balls.size(); i++) {
       Ball ball = balls.get(i);
       ball.display();
       ball.move();
